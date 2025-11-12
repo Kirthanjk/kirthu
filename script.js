@@ -1,11 +1,9 @@
-const button = document.getElementById('playButton');
-const message = document.getElementById('message');
-const song = document.getElementById('song');
+const playButton = document.getElementById("playButton");
+const song = document.getElementById("song");
+const message = document.getElementById("message");
 
-button.addEventListener('click', () => {
+playButton.addEventListener("click", () => {
   song.play();
-  button.style.display = 'none';
-  setTimeout(() => {
-    message.classList.remove('hidden');
-  }, 1500); // show text 1.5s after music starts
+  playButton.style.display = "none";
+  message.classList.remove("hidden");
 });

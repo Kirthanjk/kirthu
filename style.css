@@ -5,35 +5,56 @@
 }
 
 body, html {
+  background-color: #800080;
+  font-family: 'Great Vibes', cursive;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: 'Great Vibes', cursive;
   position: relative;
-   opacity: 0;
-  transform: scale(1.05);
-  animation: fadeZoom 3s ease-in forwards;
 }
 
+/* Background fade + zoom */
 .background {
   position: fixed;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  opacity: 0;
+  transform: scale(1.05);
+  animation: fadeZoom 3s ease-in forwards;
 }
 
+@keyframes fadeZoom {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Overlay fade */
 .overlay {
   position: fixed;
   width: 100%;
   height: 100%;
   background: rgba(255, 182, 193, 0.3);
   z-index: 2;
+  opacity: 0;
+  animation: fadeIn 2.5s ease-in forwards;
 }
 
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Content styling */
 .content {
   position: absolute;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -58,11 +79,15 @@ body, html {
 }
 
 #message {
-  font-size: 2rem;
-  color: #d28eff;
+  font-size: 1.8rem;
+  color: #fff;
   margin-top: 40px;
   text-shadow: 0 0 20px #fff, 0 0 40px #ff9ff3;
   animation: glow 2s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s forwards;
+  animation-delay: 1.5s;
 }
 /* 📱 Responsive design for mobile devices */
 @media (max-width: 768px) {
@@ -111,12 +136,19 @@ body, html {
 }
 
 
-.hidden {
-  display: none;
-}
-
 @keyframes glow {
   0% { text-shadow: 0 0 5px #fff, 0 0 10px #ffb6c1; }
   50% { text-shadow: 0 0 20px #fff, 0 0 40px #ff9ff3; }
   100% { text-shadow: 0 0 5px #fff, 0 0 10px #ffb6c1; }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hidden {
+  display: none;
 }
